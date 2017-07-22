@@ -5,7 +5,11 @@ var bodyParser      = require('body-parser');
 var morgan          = require('morgan');
 var methodOverride  = require('method-override');
 
-mongoose.connect('mongodb://127.0.0.1:27017/pwonlineshop');
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://127.0.0.1:27017/pwonlineshop', {useMongoClient : true})
+  .then(() => console.log('connection successful'))
+  .catch((err) => console.error(err));
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
