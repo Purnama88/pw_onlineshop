@@ -4,6 +4,7 @@ var adminschema = new Mongoose.Schema({
   name          : String,
   username      : String,
   password      : String,
+  note          : String,
   lastmodified  : {type : Date, default : Date.now}
 });
 
